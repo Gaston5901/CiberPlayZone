@@ -912,9 +912,10 @@ img {
 }
 
 .memberCard__img {
-  height: 160px;
   width: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
+  object-position: center;
   background: rgba(0, 0, 0, 0.22);
 }
 
@@ -927,7 +928,7 @@ img {
   .memberCard {
     grid-auto-rows: 1fr;
     display: grid;
-    grid-template-rows: 180px 1fr;
+    grid-template-rows: auto 1fr;
     padding: 0;
   }
 
@@ -1017,7 +1018,17 @@ img {
 @media (min-width: 920px) {
   .contact {
     grid-template-columns: 1fr 1fr;
+    align-items: start;
   }
+}
+
+.contact > .panel {
+  align-self: start;
+}
+
+.contactCard {
+  display: grid;
+  align-content: start;
 }
 
 .contact__actions {
@@ -1031,9 +1042,107 @@ img {
   background: linear-gradient(135deg, rgba(32, 210, 123, 0.16), rgba(32, 210, 123, 0.03));
 }
 
-.contactHint {
-  margin: 12px 0 0;
-  color: rgba(255, 255, 255, 0.75);
+.contactCard--location {
+  background: linear-gradient(135deg, rgba(124, 92, 255, 0.18), rgba(0, 212, 255, 0.06));
+}
+
+.schedule {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.schedule__item {
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.schedule__item--highlight {
+  background: linear-gradient(135deg, rgba(124, 92, 255, 0.18), rgba(0, 212, 255, 0.10));
+}
+
+.schedule__item--closed {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.schedule__day {
+  color: var(--text);
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.schedule__time {
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.5;
+}
+
+.contactLocation {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.contactLocation__label {
+  margin: 0 0 6px;
+  color: var(--muted2);
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+}
+
+.contactLocation__address {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.94);
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.contactMap {
+  margin-top: 14px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.18);
+  min-height: 260px;
+}
+
+.contactMap__frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  border: 0;
+}
+
+.contactMap__link {
+  margin-top: 12px;
+}
+
+@media (max-width: 919px) {
+  .contactMap {
+    min-height: 220px;
+  }
+
+  .contactMap__frame {
+    min-height: 220px;
+  }
+}
+
+@media (min-width: 920px) {
+  .contactMap {
+    min-height: 280px;
+  }
+
+  .contactMap__frame {
+    min-height: 280px;
+  }
 }
 
 .footer {
@@ -1180,8 +1289,10 @@ img {
 
 .modal__img {
   width: 100%;
-  height: 260px;
-  object-fit: cover;
+  height: auto;
+  max-height: 56vh;
+  object-fit: contain;
+  object-position: center;
   background: rgba(0, 0, 0, 0.18);
 }
 
@@ -1189,6 +1300,8 @@ img {
   .modal__img {
     height: 100%;
     min-height: 420px;
+    max-height: none;
+    object-fit: contain;
   }
 }
 
@@ -1285,6 +1398,9 @@ img {
   );
   
   -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
 

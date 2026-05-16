@@ -281,10 +281,10 @@
             <div class="panel contactCard">
               <h3 class="panel__title">Reservas por WhatsApp</h3>
               <p class="muted">
-                Tocá el botón y te abre el chat. Después pegamos tu número cuando me lo pases.
+                Escribinos por WhatsApp para reservar tu turno.
               </p>
               <div class="contact__actions">
-                <a class="btn btn--whatsapp" href="https://wa.me/" target="_blank" rel="noreferrer">
+                <a class="btn btn--whatsapp" href="https://wa.me/5493815309853" target="_blank" rel="noreferrer">
   <span class="btn__iconWrap" aria-hidden="true">
     <svg
       class="btn__icon"
@@ -301,18 +301,53 @@
   <span>Reservar por WhatsApp</span>
 </a>
               </div>
-              <p class="muted contactHint">
-                Tip: agregá mensaje directo tipo “Hola, quiero reservar 2 horas”.
-              </p>
             </div>
 
-            <div class="panel">
+            <div class="panel contactCard contactCard--location">
               <h3 class="panel__title">Ubicación & horarios</h3>
-              <p class="muted">
-                Dirección: <strong>(completá acá)</strong><br />
-                Horarios: <strong>(completá acá)</strong>
-              </p>
-              <p class="muted">Tip: podés embebir un mapa de Google (iframe) sin base de datos.</p>
+
+              <div class="schedule" aria-label="Horarios de atención">
+                <div class="schedule__item">
+                  <span class="schedule__day">Lunes a jueves</span>
+                  <span class="schedule__time">8:00 a 21:00 hs</span>
+                </div>
+                <div class="schedule__item schedule__item--highlight">
+                  <span class="schedule__day">Viernes</span>
+                  <span class="schedule__time">Torneos y noches gamer · 19:00 a 05:00 hs</span>
+                </div>
+                <div class="schedule__item">
+                  <span class="schedule__day">Sábado</span>
+                  <span class="schedule__time">Torneos y noches gamer · 19:00 a 05:00 hs</span>
+                </div>
+                <div class="schedule__item schedule__item--closed">
+                  <span class="schedule__day">Domingo</span>
+                  <span class="schedule__time">Cerrado</span>
+                </div>
+              </div>
+
+              <div class="contactLocation">
+                <p class="contactLocation__label">Dirección</p>
+                <p class="contactLocation__address">Escuela Bartolome Mitre N°8, T4124 Trancas, Tucumán</p>
+              </div>
+
+              <div class="contactMap">
+                <iframe
+                  class="contactMap__frame"
+                  title="Mapa de ubicación de CiberPlayZone"
+                  src="https://maps.google.com/maps?hl=es&q=Escuela%20Bartolome%20Mitre%20N%C2%B08,%20T4124%20Trancas,%20Tucum%C3%A1n&z=20&output=embed"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+
+              <a
+                class="btn btn--ghost contactMap__link"
+                href="https://www.google.com/maps/search/?api=1&query=Escuela%20Bartolome%20Mitre%20N%C2%B08,%20T4124%20Trancas,%20Tucum%C3%A1n"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Abrir en Google Maps
+              </a>
             </div>
           </div>
         </div>
