@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#0b0f1a" />
+
+    <title>CiberPlayZone</title>
+    <meta
+      name="description"
+      content="CiberPlayZone — centro de entretenimiento: PCs gamer, internet, consolas, torneos, snacks y bebidas."
+    />
+
+    <link rel="icon" href="assets/zonas/logo.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#contenido">Saltar al contenido</a>
+
+    <header class="header" id="inicio">
+      <nav class="nav" aria-label="Navegación principal">
+        <a class="brand" href="#inicio" aria-label="CiberPlayZone (inicio)">
+          <img class="brand__logo" src="assets/zonas/logo.png" alt="Logo de CiberPlayZone" />
+          <span class="brand__name">CiberPlayZone</span>
+        </a>
+
+        <button
+          class="nav__toggle"
+          type="button"
+          data-nav-toggle
+          aria-expanded="false"
+          aria-controls="navLinks"
+          aria-label="Abrir menú"
+        >
+          <span class="nav__toggleIcon nav__toggleIcon--open" aria-hidden="true">☰</span>
+          <span class="nav__toggleIcon nav__toggleIcon--close" aria-hidden="true">×</span>
+        </button>
+
+        <div class="nav__links" id="navLinks" data-nav-links>
+          <a href="#zonas">Zonas</a>
+          <a href="#eventos">Eventos</a>
+          <a href="#integrantes">Integrantes</a>
+          <a class="nav__cta" href="#contacto">Reservar</a>
+        </div>
+      </nav>
+
+      <div class="hero" id="contenido">
+        <div class="hero__content">
+          <h1 class="hero__title">Tu zona gamer, sin vueltas.</h1>
+          <p class="hero__lead">
+            PCs para jugar e internet, consolas, torneos y snacks. Un ambiente competitivo pero sano,
+            con luces LED y buena vibra.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#zonas">Ver zonas</a>
+            <a class="btn btn--ghost" href="#integrantes">Conocer al equipo</a>
+          </div>
+
+          <ul class="hero__stats" aria-label="Datos rápidos">
+            <li>
+              <span class="hero__statNum">+30</span>
+              <span class="hero__statLabel">equipos</span>
+            </li>
+            <li>
+              <span class="hero__statNum">Semanal</span>
+              <span class="hero__statLabel">torneos</span>
+            </li>
+            <li>
+              <span class="hero__statNum">LED</span>
+              <span class="hero__statLabel">ambiente</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="hero__art" aria-hidden="true">
+          <div class="glow"></div>
+          <div class="heroCard">
+            <div class="heroCard__row">
+              <span class="dot dot--green"></span>
+              <span class="dot dot--yellow"></span>
+              <span class="dot dot--red"></span>
+              <span class="heroCard__label">CiberPlayZone</span>
+            </div>
+            <div class="heroCard__grid">
+              <div class="miniTile">Ping estable</div>
+              <div class="miniTile">Sillones</div>
+              <div class="miniTile">Consolas</div>
+              <div class="miniTile">Snacks</div>
+              <div class="miniTile">Rankings</div>
+              <div class="miniTile">Comunidad</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="zonas" aria-labelledby="zonasTitle">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="section__title" id="zonasTitle">Zonas y servicios</h2>
+            <p class="section__sub">
+              Todo lo necesario para jugar cómodo: equipos, periféricos, consolas y un espacio pensado
+              para competir sin mala onda.
+            </p>
+          </div>
+
+          <div class="carousel" data-carousel>
+            <div class="carousel__controls">
+              <button class="iconBtn" type="button" data-carousel-prev aria-label="Anterior">
+                ◀
+              </button>
+              <div class="carousel__dots" data-carousel-dots aria-label="Páginas"></div>
+              <button class="iconBtn" type="button" data-carousel-next aria-label="Siguiente">
+                ▶
+              </button>
+            </div>
+
+            <div class="carousel__track" data-carousel-track tabindex="0" aria-label="Carrusel">
+              <article class="slide">
+                <img
+                  class="slide__img"
+                  src="assets/zonas/pc.png"
+                  alt="Foto de PCs gamer"
+                  onerror="this.onerror=null; this.src='assets/pc.svg'; this.alt='';"
+                />
+                <h3 class="slide__title">PCs gamer</h3>
+                <p class="slide__text">Equipos listos para rankear: periféricos, comodidad y ritmo.</p>
+              </article>
+              <article class="slide">
+                <img
+                  class="slide__img"
+                  src="assets/zonas/consolas.png"
+                  alt="Foto de la zona consolas"
+                  onerror="this.onerror=null; this.src='assets/console.svg'; this.alt='';"
+                />
+                <h3 class="slide__title">Zona consolas</h3>
+                <p class="slide__text">Partidas en grupo, sillones y pantalla grande para viciar.</p>
+              </article>
+              <article class="slide">
+                <img
+                  class="slide__img"
+                  src="assets/zonas/torneos.png"
+                  alt="Foto de torneos en CiberPlayZone"
+                  onerror="this.onerror=null; this.src='assets/trophy.svg'; this.alt='';"
+                />
+                <h3 class="slide__title">Torneos</h3>
+                <p class="slide__text">Competitivo pero sano: brackets, premios y ranking mensual.</p>
+              </article>
+              <article class="slide">
+                <img
+                  class="slide__img"
+                  src="assets/zonas/snacks.png"
+                  alt="Foto de snacks y bebidas"
+                  onerror="this.onerror=null; this.src='assets/snack.svg'; this.alt='';"
+                />
+                <h3 class="slide__title">Snacks & bebidas</h3>
+                <p class="slide__text">Para cortar la racha: bebidas frías, snacks y energía.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="features">
+            <div class="feature">
+              <h3 class="feature__title">Ambiente inclusivo</h3>
+              <p class="feature__text">Todos los niveles: desde casual hasta tryhard.</p>
+            </div>
+            <div class="feature">
+              <h3 class="feature__title">Reglas claras</h3>
+              <p class="feature__text">Turnos, cuidado de equipos y respeto siempre.</p>
+            </div>
+            <div class="feature">
+              <h3 class="feature__title">Comunidad</h3>
+              <p class="feature__text">Noches gamer, eventos y mitos de los campeones.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="eventos" aria-labelledby="eventosTitle">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="section__title" id="eventosTitle">Eventos</h2>
+            <p class="section__sub">Torneos, noches gamer y comunidad: siempre pasa algo.</p>
+          </div>
+
+          <div class="panel eventHighlight" aria-label="Próximo evento">
+            <div class="eventHighlight__head">
+              <div class="timelineItem__pill">Próximo</div>
+              <h3 class="eventHighlight__title">Torneo semanal</h3>
+            </div>
+            <p class="muted eventHighlight__text">
+              Formato simple: te anotás, jugás, sumás puntos y listo. Competitivo pero sano.
+            </p>
+            <div class="eventHighlight__grid">
+              <div class="eventMini">
+                <div class="eventMini__k">Incluye</div>
+                <div class="eventMini__v">Bracket + premios + ranking</div>
+              </div>
+              <div class="eventMini">
+                <div class="eventMini__k">Inscripción</div>
+                <div class="eventMini__v">Por WhatsApp o en el local</div>
+              </div>
+              <div class="eventMini">
+                <div class="eventMini__k">Recomendación</div>
+                <div class="eventMini__v">Llegá 10 min antes</div>
+              </div>
+            </div>
+            <div class="eventHighlight__actions">
+              <a class="btn btn--primary" href="#contacto">Inscribirme</a>
+              <a class="btn btn--ghost" href="#zonas">Ver zonas</a>
+            </div>
+          </div>
+
+          <div class="timeline" role="list">
+            <div class="timelineItem" role="listitem">
+              <div class="timelineItem__top">
+                <img class="timelineItem__icon" src="assets/trophy.svg" alt="" aria-hidden="true" />
+                <div>
+                  <div class="timelineItem__pill">Semanal</div>
+                  <h3 class="timelineItem__title">Torneos</h3>
+                </div>
+              </div>
+              <p class="timelineItem__text">Formato simple: inscripción, bracket y premio.</p>
+            </div>
+            <div class="timelineItem" role="listitem">
+              <div class="timelineItem__top">
+                <img class="timelineItem__icon" src="assets/pc.svg" alt="" aria-hidden="true" />
+                <div>
+                  <div class="timelineItem__pill">Mensual</div>
+                  <h3 class="timelineItem__title">Ranking de jugadores</h3>
+                </div>
+              </div>
+              <p class="timelineItem__text">Subí en el ranking y ganá perks.</p>
+            </div>
+            <div class="timelineItem" role="listitem">
+              <div class="timelineItem__top">
+                <img class="timelineItem__icon" src="assets/console.svg" alt="" aria-hidden="true" />
+                <div>
+                  <div class="timelineItem__pill">Noche</div>
+                  <h3 class="timelineItem__title">Noches gamer</h3>
+                </div>
+              </div>
+              <p class="timelineItem__text">Eventos temáticos y partidas en grupo.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="integrantes" aria-labelledby="integrantesTitle">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="section__title" id="integrantesTitle">Integrantes</h2>
+            <p class="section__sub">
+              Conocé al equipo. Tocá “Ver más” para ver qué hace cada rol.
+            </p>
+          </div>
+
+          <div class="members" data-members-grid aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="section" id="contacto" aria-labelledby="contactoTitle">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="section__title" id="contactoTitle">Contacto</h2>
+            <p class="section__sub">Dejá listo tu turno. Te respondemos por WhatsApp.</p>
+          </div>
+
+          <div class="contact">
+            <div class="panel contactCard">
+              <h3 class="panel__title">Reservas por WhatsApp</h3>
+              <p class="muted">
+                Tocá el botón y te abre el chat. Después pegamos tu número cuando me lo pases.
+              </p>
+              <div class="contact__actions">
+                <a class="btn btn--whatsapp" href="https://wa.me/" target="_blank" rel="noreferrer">
+  <span class="btn__iconWrap" aria-hidden="true">
+    <svg
+      class="btn__icon"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path
+        d="M20.52 3.48A11.8 11.8 0 0 0 12.05 0C5.52 0 .2 5.3.2 11.82c0 2.08.54 4.1 1.58 5.88L0 24l6.48-1.7a11.77 11.77 0 0 0 5.57 1.42h.01c6.53 0 11.85-5.3 11.85-11.82 0-3.15-1.23-6.1-3.39-8.42Zm-8.47 18.2a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.85 1.01 1.03-3.74-.23-.38a9.78 9.78 0 0 1-1.5-5.17c0-5.42 4.43-9.84 9.88-9.84 2.64 0 5.11 1.02 6.97 2.88a9.77 9.77 0 0 1 2.9 6.96c0 5.43-4.43 9.86-9.84 9.86Zm5.4-7.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.66.15-.2.3-.76.97-.93 1.17-.17.2-.34.22-.64.08-.3-.15-1.24-.46-2.36-1.46-.88-.79-1.47-1.76-1.64-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.34.44-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.66-1.6-.91-2.2-.24-.57-.49-.5-.66-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.27.48 1.7.61.71.22 1.36.19 1.88.11.57-.08 1.76-.72 2.01-1.42.25-.69.25-1.29.17-1.42-.08-.12-.27-.2-.57-.35Z"
+      />
+    </svg>
+  </span>
+
+  <span>Reservar por WhatsApp</span>
+</a>
+              </div>
+              <p class="muted contactHint">
+                Tip: agregá mensaje directo tipo “Hola, quiero reservar 2 horas”.
+              </p>
+            </div>
+
+            <div class="panel">
+              <h3 class="panel__title">Ubicación & horarios</h3>
+              <p class="muted">
+                Dirección: <strong>(completá acá)</strong><br />
+                Horarios: <strong>(completá acá)</strong>
+              </p>
+              <p class="muted">Tip: podés embebir un mapa de Google (iframe) sin base de datos.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div class="footer__brand">
+          <img class="footer__logo" src="assets/zonas/logo.png" alt="" />
+          <div>
+            <div class="footer__name">CiberPlayZone</div>
+            <div class="footer__meta">Centro de entretenimiento · Zona gamer</div>
+          </div>
+        </div>
+        <div class="footer__links">
+          <a href="#inicio">Inicio</a>
+          <a href="#zonas">Zonas</a>
+          <a href="#integrantes">Integrantes</a>
+        </div>
+
+        <div class="footer__copyright">© 2026 CiberPlayZone · Todos los derechos reservados.</div>
+      </div>
+    </footer>
+
+    <div class="modal" data-modal hidden aria-hidden="true">
+      <div class="modal__backdrop" data-modal-backdrop></div>
+      <div
+        class="modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+        aria-describedby="modalDesc"
+      >
+        <button class="modal__close" type="button" data-modal-close aria-label="Cerrar">×</button>
+        <div class="modal__body">
+          <img class="modal__img" data-modal-img src="assets/member-placeholder.svg" alt="" />
+          <div class="modal__info">
+            <h3 class="modal__title" id="modalTitle" data-modal-title>Integrante</h3>
+            <p class="modal__role" data-modal-role>Rol</p>
+            <p class="modal__desc" id="modalDesc" data-modal-desc>Descripción</p>
+
+            <div class="modal__meta">
+              <div class="metaCard">
+                <div class="metaCard__k">Se encarga de</div>
+                <div class="metaCard__v" data-modal-focus>—</div>
+              </div>
+              <div class="metaCard">
+                <div class="metaCard__k">Como trabaja</div>
+                <div class="metaCard__v" data-modal-work>—</div>
+              </div>
+            </div>
+
+            <div class="modal__actions">
+              <button class="btn btn--ghost" type="button" data-modal-close>Volver</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
