@@ -248,7 +248,7 @@ function initMembers() {
   if (!grid) return;
 
   const members = [
-    {
+    {  
       id: 'gerente',
       name: 'Emanuel Fernández',
       role: 'Gerente — Finanzas & Proveedores',
