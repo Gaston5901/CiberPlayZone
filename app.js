@@ -1,6 +1,18 @@
 const qs = (sel, root = document) => root.querySelector(sel);
 const qsa = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
+// Controlar el loader gamer
+function initLoader() {
+  const loader = qs('[data-loader]');
+  if (!loader) return;
+
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      loader.classList.add('loader--hidden');
+    }, 4000);
+  });
+}
+
 function initNav() {
   const toggle = qs('[data-nav-toggle]');
   const links = qs('[data-nav-links]');
@@ -510,6 +522,7 @@ function initReveal() {
   }
 }
 
+initLoader();
 initNav();
 initCarousel();
 initMembers();

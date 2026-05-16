@@ -78,6 +78,123 @@ a:hover {
   text-decoration: underline;
 }
 
+/* ============ LOADER GAMER ============ */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #0b0f1a 0%, #1a0f2e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+}
+
+.loader.loader--hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader__container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.loader__logo {
+  width: 140px;
+  height: 140px;
+  filter: drop-shadow(0 0 25px rgba(255, 138, 0, 0.5)) drop-shadow(0 0 15px rgba(0, 212, 255, 0.4));
+  order: 1;
+}
+
+.loader__title {
+  font-family: var(--title);
+  font-size: 28px;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0;
+  order: 2;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ff8a00, #00d4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: loaderTitleGlow 2s ease-in-out infinite;
+}
+
+@keyframes loaderTitleGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 138, 0, 0.3), 0 0 20px rgba(0, 212, 255, 0.2);
+    filter: brightness(1);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 138, 0, 0.6), 0 0 30px rgba(0, 212, 255, 0.4);
+    filter: brightness(1.2);
+  }
+}
+
+.loader__bar {
+  width: 260px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid;
+  border-image: linear-gradient(90deg, #ff8a00, #00d4ff) 1;
+  border-radius: 6px;
+  padding: 4px;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  gap: 3px;
+  order: 3;
+  box-shadow: 0 0 20px rgba(255, 138, 0, 0.25), inset 0 0 15px rgba(0, 212, 255, 0.1);
+}
+
+.loader__cell {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+  animation: loaderCell 3.5s ease-in-out forwards;
+  animation-delay: calc(var(--cell-index) * 0.15s);
+}
+
+.loader__cell:nth-child(1) { --cell-index: 0; }
+.loader__cell:nth-child(2) { --cell-index: 1; }
+.loader__cell:nth-child(3) { --cell-index: 2; }
+.loader__cell:nth-child(4) { --cell-index: 3; }
+.loader__cell:nth-child(5) { --cell-index: 4; }
+.loader__cell:nth-child(6) { --cell-index: 5; }
+.loader__cell:nth-child(7) { --cell-index: 6; }
+.loader__cell:nth-child(8) { --cell-index: 7; }
+.loader__cell:nth-child(9) { --cell-index: 8; }
+.loader__cell:nth-child(10) { --cell-index: 9; }
+.loader__cell:nth-child(11) { --cell-index: 10; }
+.loader__cell:nth-child(12) { --cell-index: 11; }
+.loader__cell:nth-child(13) { --cell-index: 12; }
+.loader__cell:nth-child(14) { --cell-index: 13; }
+.loader__cell:nth-child(15) { --cell-index: 14; }
+.loader__cell:nth-child(16) { --cell-index: 15; }
+.loader__cell:nth-child(17) { --cell-index: 16; }
+.loader__cell:nth-child(18) { --cell-index: 17; }
+.loader__cell:nth-child(19) { --cell-index: 18; }
+.loader__cell:nth-child(20) { --cell-index: 19; }
+
+@keyframes loaderCell {
+  0% {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  50% {
+    background: linear-gradient(135deg, #ff8a00, #00d4ff);
+    box-shadow: 0 0 8px rgba(255, 138, 0, 0.6), inset 0 0 4px rgba(0, 212, 255, 0.4);
+  }
+  100% {
+    background: linear-gradient(135deg, #ff8a00, #00d4ff);
+    box-shadow: 0 0 8px rgba(255, 138, 0, 0.6), inset 0 0 4px rgba(0, 212, 255, 0.4);
+  }
+}
+
+/* ============ FIN LOADER GAMER ============ */
+
 img {
   max-width: 100%;
   display: block;
