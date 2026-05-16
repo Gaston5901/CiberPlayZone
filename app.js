@@ -32,7 +32,97 @@ function initNav() {
   window.addEventListener('resize', () => {
     if (window.matchMedia('(min-width: 920px)').matches) setOpen(false);
   });
+  // Set CSS scroll offset based on nav height so anchors aren't hidden
+  const setScrollOffset = () => {
+    const h = nav ? Math.ceil(nav.getBoundingClientRect().height) : 72;
+    // reduce extra gap slightly so headings don't appear too far below the nav
+    document.documentElement.style.setProperty('--scroll-offset', `${h + 6}px`);
+  };
+  setScrollOffset();
+  window.addEventListener('resize', setScrollOffset);
+
+  // --- Active link handling (highlights current section in the menu) ---
+  const navLinks = qsa('a[href^="#"]', links);
+
+  const clearActive = () => {
+    navLinks.forEach((a) => {
+      a.removeAttribute('aria-current');
+      a.classList.remove('nav__link--active');
+    });
+  };
+
+  const setActiveById = (id) => {
+    if (!id) return;
+    clearActive();
+    const match = navLinks.find((a) => a.getAttribute('href') === `#${id}`);
+    if (match) {
+      match.setAttribute('aria-current', 'true');
+      match.classList.add('nav__link--active');
+    }
+  };
+
+  if ('IntersectionObserver' in window) {
+    const sections = qsa('section[id], header[id], .hero[id]');
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveById(entry.target.id);
+        });
+      },
+      { root: null, rootMargin: '-40% 0px -40% 0px', threshold: 0 }
+    );
+    sections.forEach((s) => io.observe(s));
+  }
+
+  // When clicking a nav link, set active immediately and close menu
+  navLinks.forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const href = a.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      const id = href.slice(1);
+      setActiveById(id);
+      // close mobile menu (existing behavior) and let scroll occur
+      setOpen(false);
+    });
+  });
 }
+
+// Añade una animación breve cuando navegás a un anchor (click o cambio de hash)
+function initAnchorAnimation() {
+  const highlight = (id) => {
+    if (!id) return;
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.remove('anchor-focus');
+    // force reflow
+    void el.offsetWidth;
+    el.classList.add('anchor-focus');
+    window.setTimeout(() => el.classList.remove('anchor-focus'), 700);
+  };
+
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const href = a.getAttribute('href');
+    if (!href || href === '#') return;
+    const id = href.slice(1);
+    // let browser scroll first, then highlight
+    window.setTimeout(() => highlight(id), 120);
+  });
+
+  window.addEventListener('hashchange', () => {
+    const id = location.hash.slice(1);
+    window.setTimeout(() => highlight(id), 50);
+  });
+
+  // on load with hash
+  if (location.hash) {
+    const id = location.hash.slice(1);
+    window.setTimeout(() => highlight(id), 120);
+  }
+}
+
+initAnchorAnimation();
 
 function initCarousel() {
   const root = qs('[data-carousel]');
@@ -160,27 +250,27 @@ function initMembers() {
   const members = [
     {
       id: 'gerente',
-      name: 'Nombre Apellido',
-      role: 'Gerente',
+      name: 'Emanuel Fernández',
+      role: 'Gerente — Finanzas & Proveedores',
       img: 'assets/member-placeholder.svg',
-      short: 'Coordina el equipo y asegura una experiencia top.',
-      desc: 'Supervisa la operación del ciber: organiza turnos, define prioridades, maneja proveedores y cuida que el ambiente sea competitivo pero sano.',
-      focus: 'Gestión general, atención al cliente, control de normas y coordinación de eventos.',
-      work: 'Escucha feedback, ajusta procesos y mantiene al equipo alineado con los valores.',
+      short: 'Coordina el negocio, finanzas y proveedores; no gestiona turnos.',
+      desc: 'Lidera la parte administrativa: controla finanzas, pagos y relaciones con proveedores. No se encarga del registro de turnos ni la operación diaria sobre las mesas.',
+      focus: 'Finanzas, compras y relaciones con proveedores.',
+      work: 'Gestiona facturación, pagos y acuerdos con proveedores; define prioridades estratégicas para el local.',
     },
     {
       id: 'soporte',
-      name: 'Nombre Apellido',
-      role: 'Soporte técnico',
+      name: 'Gastón Ituarte',
+      role: 'Soporte técnico / Programador web',
       img: 'assets/member-placeholder.svg',
-      short: 'Mantiene los equipos listos para jugar sin lag.',
-      desc: 'Se encarga del mantenimiento preventivo y correctivo de PCs y consolas, instalación de juegos, periféricos y red. La idea: que todo ande estable y rápido.',
-      focus: 'Mantenimiento de equipos, periféricos, red, actualizaciones y rendimiento.',
-      work: 'Control de temperaturas, limpieza, drivers, backups de configuración y chequeos.',
+      short: 'Mantiene los equipos y desarrolla mejoras en la web del ciber.',
+      desc: 'Responsable del mantenimiento de PCs y consolas, y del desarrollo y mantenimiento de la página: arregla scripts, implementa features y mantiene integraciones con WhatsApp y formularios.',
+      focus: 'Soporte de hardware, redes y desarrollo web (front-end/pequeñas integraciones).',
+      work: 'Actualiza la web, corrige bugs, optimiza rendimiento y asegura que las integraciones funcionen correctamente.',
     },
     {
       id: 'eventos',
-      name: 'Nombre Apellido',
+      name: 'Paolo Zelarayan',
       role: 'Coordinación de torneos',
       img: 'assets/member-placeholder.svg',
       short: 'Arma brackets, reglas y premios para la comunidad.',
@@ -189,8 +279,18 @@ function initMembers() {
       work: 'Publica fechas, registra resultados y coordina premios con el gerente.',
     },
     {
+      id: 'eventos2',
+      name: 'Enzo Fernandez',
+      role: 'Coordinación de torneos',
+      img: 'assets/member-placeholder.svg',
+      short: 'Apoya en la logística y comunicación de eventos.',
+      desc: 'Colabora en la planificación de eventos, gestiona inscripciones y comunica resultados; ayuda en la moderación durante torneos.',
+      focus: 'Logística de eventos, comunicación y soporte en torneos.',
+      work: 'Asiste en la inscripción, coordinación de bracket y comunicación con participantes.',
+    },
+    {
       id: 'barra',
-      name: 'Nombre Apellido',
+      name: 'Milagros Moreno',
       role: 'Snacks & atención',
       img: 'assets/member-placeholder.svg',
       short: 'Hace que la experiencia sea completa: comida, bebida y orden.',
@@ -198,19 +298,29 @@ function initMembers() {
       focus: 'Stock y ventas, orden y limpieza, apoyo en atención y turnos.',
       work: 'Revisa reposición, registra ventas y mantiene el espacio prolijo.',
     },
+    {
+      id: 'limpieza',
+      name: 'Emanuel Corbalan',
+      role: 'Limpieza & Mantenimiento',
+      img: 'assets/member-placeholder.svg',
+      short: 'Encargado de limpieza del local, baños y mantenimiento de máquinas.',
+      desc: 'Se ocupa de la limpieza diaria del local, mantenimiento básico de equipos y la higiene de baños y zonas comunes para asegurar un espacio cómodo.',
+      focus: 'Limpieza, mantenimiento preventivo y revisión de máquinas.',
+      work: 'Realiza limpieza profunda, revisa el estado de las máquinas y reporta incidencias al soporte.',
+    },
   ];
 
   grid.innerHTML = members
     .map(
       (m) => `
-      <article class="memberCard" data-member-card data-member-id="${m.id}">
+      <article class="memberCard" data-member-card data-member-id="${m.id}" tabindex="0" role="button" aria-label="Ver más: ${escapeHtml(m.name)}">
         <img class="memberCard__img" src="${m.img}" alt="" />
         <div class="memberCard__body">
           <div class="memberCard__name">${escapeHtml(m.name)}</div>
           <div class="memberCard__role">${escapeHtml(m.role)}</div>
           <p class="memberCard__text">${escapeHtml(m.short)}</p>
           <div class="memberCard__actions">
-            <button class="btn btn--ghost" type="button" data-member-more>Ver más</button>
+            <button class="btn btn--ghost" type="button" data-member-more aria-label="Abrir detalles de ${escapeHtml(m.name)}">Ver más</button>
           </div>
         </div>
       </article>
@@ -261,6 +371,7 @@ function initMembers() {
     setModalOpen(true);
   };
 
+  // Click on internal "Ver más" button
   grid.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-member-more]');
     if (!btn) return;
@@ -270,13 +381,44 @@ function initMembers() {
     openFor(member);
   });
 
+  // Make entire card clickable/tappable: delegate clicks on the card itself
+  grid.addEventListener('click', (e) => {
+    const card = e.target.closest('[data-member-card]');
+    if (!card) return;
+    // if the click came from the inner button, ignore (already handled)
+    if (e.target.closest('[data-member-more]')) return;
+    const id = card.getAttribute('data-member-id');
+    const member = members.find((m) => m.id === id);
+    openFor(member);
+  });
+
+  // Allow keyboard activation when card is focused
+  grid.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const card = e.target.closest('[data-member-card]');
+    if (!card) return;
+    e.preventDefault();
+    const id = card.getAttribute('data-member-id');
+    const member = members.find((m) => m.id === id);
+    openFor(member);
+  });
+
+  // Close handlers: buttons, backdrop, Escape key
   closeButtons.forEach((b) => b.addEventListener('click', () => setModalOpen(false)));
+
+  // Delegated handler (robust if DOM changes)
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest && e.target.closest('[data-modal-close]');
+    if (btn) setModalOpen(false);
+  });
+
   backdrop?.addEventListener('click', () => setModalOpen(false));
 
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal && !modal.hidden) setModalOpen(false);
   });
 
+  // Focus trap inside modal
   modal?.addEventListener('keydown', (e) => {
     if (e.key !== 'Tab') return;
     const focusables = getFocusable(modal);
