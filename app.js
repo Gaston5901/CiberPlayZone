@@ -304,7 +304,7 @@ function initMembers() {
       id: 'barra',
       name: 'Milagros Moreno',
       role: 'Snacks & atención',
-      img: 'assets/miembros/mili.png',
+      img: 'assets/miembros/Mili.png',
       short: 'Hace que la experiencia sea completa: comida, bebida y orden.',
       desc: 'Gestiona stock de snacks y bebidas, mantiene orden y limpieza, y ayuda con la atención para que los turnos se respeten.',
       focus: 'Stock y ventas, orden y limpieza, apoyo en atención y turnos.',
